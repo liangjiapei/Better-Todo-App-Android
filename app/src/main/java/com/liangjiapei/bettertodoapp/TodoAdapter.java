@@ -10,6 +10,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -41,7 +43,11 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoAdapterVie
 
         public final TextView mTodoDescriptionTextView;
         public final TextView mTodoCreatedAtTextView;
+        public final TextView mTodoDueAtTextView;
+        public final TextView mTodoDueAtTextViewLabel;
+        public final TextView mTodoCreatedAtTextViewLabel;
         public final CheckBox mTodoCheckBox;
+
 
         private Context context;
 
@@ -50,6 +56,9 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoAdapterVie
             mTodoDescriptionTextView = (TextView) view.findViewById(R.id.tv_todo_list_item_description);
             mTodoCreatedAtTextView = (TextView) view.findViewById(R.id.tv_todo_list_item_created_at);
             mTodoCheckBox = (CheckBox) view.findViewById(R.id.cb_todo_list_item);
+            mTodoCreatedAtTextViewLabel = (TextView) view.findViewById(R.id.tv_created_at_label);
+            mTodoDueAtTextView = (TextView) view.findViewById(R.id.tv_due_date);
+            mTodoDueAtTextViewLabel = (TextView) view.findViewById(R.id.tv_due_at_label);
 
             context = view.getContext();
 
@@ -90,13 +99,22 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoAdapterVie
 
         final TextView descriptionTextView = todoAdapterViewHolder.mTodoDescriptionTextView;
         final TextView createdAtTextView = todoAdapterViewHolder.mTodoCreatedAtTextView;
+        final TextView createdAtTextViewLabel = todoAdapterViewHolder.mTodoCreatedAtTextViewLabel;
+        final TextView dueAtTextView = todoAdapterViewHolder.mTodoDueAtTextView;
+        final TextView dueAtTextViewLabel = todoAdapterViewHolder.mTodoDueAtTextViewLabel;
 
         if (isCompleted) {
             descriptionTextView.setPaintFlags(descriptionTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             createdAtTextView.setPaintFlags(descriptionTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            createdAtTextViewLabel.setPaintFlags(descriptionTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            dueAtTextView.setPaintFlags(descriptionTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            dueAtTextViewLabel.setPaintFlags(descriptionTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         } else {
             descriptionTextView.setPaintFlags(descriptionTextView.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
             createdAtTextView.setPaintFlags(descriptionTextView.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            createdAtTextViewLabel.setPaintFlags(descriptionTextView.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            dueAtTextView.setPaintFlags(descriptionTextView.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+            dueAtTextViewLabel.setPaintFlags(descriptionTextView.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
         }
 
 

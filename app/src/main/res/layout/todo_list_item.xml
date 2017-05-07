@@ -40,6 +40,30 @@
                 android:textSize="30sp" />
 
             <TextView
+                android:id="@+id/tv_due_at_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Due at:"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_due_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="May 7, 2017 @ 8:00 PM"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_created_at_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Created at:"
+                android:textSize="18sp" />
+
+            <TextView
                 android:id="@+id/tv_todo_list_item_created_at"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
